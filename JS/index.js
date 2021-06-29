@@ -43,6 +43,8 @@ const marking = (event) => {
     tds[trNumber][tdNumber].textContent = turn;
     if (turn === "O") {
       tds[trNumber][tdNumber].style = "color: #285f64;";
+    } else {
+      tds[trNumber][tdNumber].style = "color: #fff;";
     }
 
     console.log(turn);
