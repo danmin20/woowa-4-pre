@@ -18,8 +18,8 @@ newGame.addEventListener("click", () => {
   count2.innerText = 0;
 
   turn = "X";
-  tds.forEach(function (trs) {
-    trs.forEach(function (td) {
+  tds.forEach((trs) => {
+    trs.forEach((td) => {
       td.textContent = "";
     });
   });
@@ -27,22 +27,25 @@ newGame.addEventListener("click", () => {
 
 resetGame.addEventListener("click", () => {
   turn = "X";
-  tds.forEach(function (trs) {
-    trs.forEach(function (td) {
+  tds.forEach((trs) => {
+    trs.forEach((td) => {
       td.textContent = "";
     });
   });
 });
 
-const marking = function (event) {
+const marking = (event) => {
   const trNumber = trs.indexOf(event.target.parentNode);
-  console.log("trNumber", trNumber);
   const tdNumber = tds[trNumber].indexOf(event.target);
-  console.log("tdNumber", tdNumber);
 
   // 칸이 비어있으면
   if (tds[trNumber][tdNumber].textContent === "") {
     tds[trNumber][tdNumber].textContent = turn;
+    if (turn === "O") {
+      tds[trNumber][tdNumber].style = "color: #285f64;";
+    }
+
+    console.log(turn);
 
     // 세 칸 다 채워졌는지
     let threeTd = false;
@@ -99,8 +102,8 @@ const marking = function (event) {
 
       // 초기화
       turn = "X";
-      tds.forEach(function (trs) {
-        trs.forEach(function (td) {
+      tds.forEach((trs) => {
+        trs.forEach((td) => {
           td.textContent = "";
         });
       });
@@ -129,14 +132,3 @@ for (let k = 0; k < 9; k++) {
   const td = document.getElementsByTagName("td").item(k);
   td.addEventListener("click", marking);
 }
-
-const resetBtn = document.getElementById("reset");
-
-resetBtn.addEventListener("click", function () {
-  turn = "X";
-  tds.forEach(function (trs) {
-    trs.forEach(function (td) {
-      td.textContent = "";
-    });
-  });
-});
